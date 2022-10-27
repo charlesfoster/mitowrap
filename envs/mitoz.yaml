@@ -1,0 +1,30 @@
+channels:
+  - conda-forge
+  - bioconda
+  - defaults
+dependencies:
+    - fastp
+    - megahit
+    - spades>=3.15.4
+    - requests
+    - bs4
+    - libgd
+    - biopython
+    - blast
+    - bwa
+    - circos=0.69
+    - ete3>=3.1.2
+    - hmmer=3.1b2
+    - infernal=1.1.1
+    - mitoz==3.4
+    - openjdk
+    - perl>=5.26
+    - perl-list-moreutils
+    - perl-params-validate
+    - perl-statistics-descriptive
+    - perl-clone
+    - perl-bioperl
+    - python>=3.6
+    - samtools
+    - seqkit
+    - tbl2asn

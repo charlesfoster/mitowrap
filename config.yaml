@@ -1,0 +1,7 @@
+reference: "/data/Cicadas/pipeline/many_mitogenomes_linear.fasta"
+suffix: "_R1_001.fastq.gz"
+keep_reads: False
+reads_dir: "/home/cfos/Programs/mitowrap/reads"
+outdir: "/home/cfos/Programs/mitowrap/results"
+using_conda: True
+using_singularity: False

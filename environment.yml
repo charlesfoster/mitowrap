@@ -1,0 +1,13 @@
+name: mitowrap
+channels:
+  - conda-forge
+  - bioconda
+  - defaults
+dependencies:
+  - python<3.10
+  - mamba
+  - pip
+  - snakemake-minimal>=7
+  - pip:
+    - pandas
+    - biopython

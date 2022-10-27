@@ -1,0 +1,12 @@
+*
+.*
+!README.md
+!LICENSE
+!config.yaml
+!environment.yml
+!Snakefile
+!.gitignore
+!envs/
+!envs/*
+!scripts/
+!scripts/*
