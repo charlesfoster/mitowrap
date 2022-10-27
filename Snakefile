@@ -317,6 +317,7 @@ rule get_organelle_assembly:
     shell:
         """
         echo "Using getOrganelle" >> {log} 2>&1
+        which get_organelle_from_reads.py >> {log} 2>&1
         get_organelle_from_reads.py -1 {input.r1} -2 {input.r2} \
         -R 10 -k 21,45,65,85,105 -F animal_mt -o {params.outdir} -t {threads} --overwrite >> {log} 2>&1
         touch {output.ckp}
