@@ -348,6 +348,8 @@ rule mitoz_assembly:
         mitoz_assembly = os.path.join(RESULT_DIR, "{sample}/mitoz/{sample}.result/{sample}.megahit.result/{sample}.megahit.mitogenome.fa"),
     params: 
         sample = "{sample}",
+        clade = config["clade"],
+        species_name = config["species_name"],
         outdir = os.path.join(RESULT_DIR, "{sample}/assembly"),
         workdir = os.path.join(RESULT_DIR, "{sample}","mitoz"),
         touchdir1 = os.path.join(RESULT_DIR, "{sample}/mitoz/{sample}.result/{sample}.{sample}.megahit.result/"),
@@ -372,9 +374,9 @@ rule mitoz_assembly:
         --skip_filter \
         --outprefix {wildcards.sample} \
         --thread_number 8 \
-        --clade Arthropoda \
+        --clade {params.clade} \
         --genetic_code auto \
-        --species_name "Unknown" \
+        --species_name {params.species_name} \
         --fq1 {input.r1} \
         --fq2 {input.r2} \
         --fastq_read_length 150 \
@@ -382,7 +384,7 @@ rule mitoz_assembly:
         --assembler megahit \
         --kmers_megahit 39 59 79 99 119 141 \
         --memory 50 \
-        --requiring_taxa 'Arthropoda' >> {log} 2>&1 || mkdir -p {params.touchdir1} && mkdir -p {params.touchdir2} && touch {output.complete_file} && touch {output.mitoz_assembly}
+        --requiring_taxa {params.clade} >> {log} 2>&1 || mkdir -p {params.touchdir1} && mkdir -p {params.touchdir2} && touch {output.complete_file} && touch {output.mitoz_assembly}
 
         touch {output.ckp}
         """
@@ -396,6 +398,8 @@ rule annotate_getOrg_assembly:
         ckp = os.path.join(RESULT_DIR, "{sample}/assembly/{sample}.annotateGetOrgComplete.txt"),
         summary = os.path.join(RESULT_DIR, "{sample}","getOrg_annotation","{sample}.{sample}.assembly.fa.result","summary.txt"),
     params: 
+        clade = config["clade"],
+        species_name = config["species_name"],
         assembly_dir = os.path.join(RESULT_DIR, "{sample}","assembly"),
         annotation_dir = os.path.join(RESULT_DIR, "{sample}","getOrg_annotation"),
         new_fasta = os.path.join(RESULT_DIR, "{sample}","getOrg_annotation","{sample}.assembly.fa")
@@ -435,9 +439,9 @@ rule annotate_getOrg_assembly:
             --fastafiles {params.new_fasta} \
             --fq1 {input.r1} \
             --fq2 {input.r1} \
-            --species_name "Unknown" \
+            --species_name {params.species_name} \
             --genetic_code auto \
-            --clade Arthropoda >> {log} 2>&1
+            --clade {params.clade} >> {log} 2>&1
             touch {output.ckp}
         fi
         """

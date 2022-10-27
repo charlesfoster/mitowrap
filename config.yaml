@@ -5,3 +5,5 @@ reads_dir: "/home/cfos/Programs/mitowrap/reads"
 outdir: "/home/cfos/Programs/mitowrap/results"
 using_conda: True
 using_singularity: False
+clade: "Arthropoda" # One of {Chordata,Arthropoda,Echinodermata,Annelida-segmented-worms,Bryozoa,Mollusca,Nematoda,Nemertea-ribbon-worms,Porifera-sponges} - see MitoZ documentation for explanation
+species_name: "Unknown"

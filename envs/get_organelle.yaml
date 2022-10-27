@@ -4,4 +4,8 @@ channels:
   - defaults
 dependencies:
   - getorganelle==1.7.6.1
+  - bowtie2
+  - spades
+  - blast
+  - bandage
   
